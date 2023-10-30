@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./lib/**/*.{js,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        satoshi: 'Satoshi-Bold'
+      }
+    },
   },
   plugins: [],
 }

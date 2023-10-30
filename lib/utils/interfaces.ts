@@ -1,0 +1,3 @@
+interface IAppComponent {
+   className?: string
+}
