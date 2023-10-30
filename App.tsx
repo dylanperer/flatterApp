@@ -1,6 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {StatusBar} from 'expo-status-bar';
+import {StyleSheet, Text, View} from 'react-native';
 import "./global.css";
+import {AppInputField} from "./lib/common/components/AppInputField";
+import {Main} from "./lib/common/components/Main";
+import React from "react";
 
 // Ensure we import the CSS for Tailwind so it's included in hot module reloads.
 //@ts-ignore
@@ -12,19 +15,9 @@ const ctx = require.context(
 if (ctx.keys().length) ctx(ctx.keys()[0]);
 
 export default function App() {
-  return (
-    <View className={"bg-red-500 flex h-full w-full"}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <Main>
+            <AppInputField/>
+        </Main>
+    );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
