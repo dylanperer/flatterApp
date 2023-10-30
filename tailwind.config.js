@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       fontFamily: {
         satoshi: 'Satoshi-Bold'
+      },
+      colors:{
+        test: '#6E3FFE'
       }
     },
   },

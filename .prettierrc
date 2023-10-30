@@ -1,6 +1,25 @@
 {
-  "printWidth": 10,
-  "tabWidth": 3,
+  "arrowParens": "avoid",
+  "bracketSameLine": true,
+  "bracketSpacing": false,
+  "requirePragma": true,
+  "tabWidth": 4,
+  "semi": true,
+  "jsxSingleQuote": true,
+  "printWidth": 80,
+  "useTabs": true,
   "singleQuote": true,
-  "bracketSameLine": true
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": [
+        "*.js",
+        "*.js.flow"
+      ],
+      "options": {
+        "parser": "hermes"
+      }
+    }
+  ]
 }
