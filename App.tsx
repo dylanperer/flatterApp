@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 import './global.css';
-import { Main } from './lib/common/components/Main';
+import { Main } from './lib/Main';
 import React, { useCallback } from 'react';
 import { SignInScreen } from './lib/features/authentication/screens/SignInScreen';
 

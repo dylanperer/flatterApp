@@ -10,7 +10,6 @@ export const SignInScreen: React.FC = () => {
    return (
       <View className="w-full flex flex-col max-w-[400px]">
          <AppInputField props={{placeholder: 'email'}}/>
-         <AppInputField props={{placeholder: 'email'}}/>
       </View>
    );
 };
