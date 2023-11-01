@@ -10,14 +10,16 @@ interface ISignInScreen {
 
 export const SignInScreen: React.FC = () => {
 	return (
-		<View className='w-full flex flex-col justify-center items-center flex-1 px-2 py-12 max-w-[450px] bg-red-400'>
+		<View
+			className='w-full flex flex-col justify-center items-center flex-1 px-2 py-12 max-w-[450px] border-2 border-red-600'>
 			<View className='self-start flex flex-col gap-2'>
 				<AppText _className='text-4xl'>{'Sign'}</AppText>
 				<AppText>{'Sub header'}</AppText>
 			</View>
-			<View className='flex flex-col w-full gap-3'>
-
-				<AppInputField prefix={LockIcon}
+			<View className='flex flex-col w-full'>
+				<AppInputField prefix={EmailIcon}
+				/>
+				<AppInputField prefix={EmailIcon}
 				/>
 			</View>
 		</View>

@@ -10,6 +10,7 @@ import Animated, {
 import { AppInteractiveLabel } from './AppInteractiveLabel';
 import { LockIcon } from '../icons';
 import { IAppComponent } from '../../utils/interfaces';
+import { useIconAnimationAdapter } from '../hooks/useIconAnimationAdapter';
 
 interface IAppInputField extends Partial<TextInputProps>, IAppComponent {
 	prefix?: any;
@@ -29,18 +30,17 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
 		deltaColor.value = withTiming(AppColors.stone[400], { duration: 300 });
 	};
 
+	const Prefix = props.prefix;
+	const {adapter} = useIconAnimationAdapter();
 	const animatedProps = useAnimatedProps(() => ({
 		fill: deltaColor.value
-	}));
-
-	const PrefixIcon = props.prefix ?? null;
+	}),[], adapter);
 
 	return (
 		<TouchableOpacity className='h-8 flex flex-col justify-between items-center flex-1'
 			onPress={() => textInputRef.current.focus()}>
 			<View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
-				{/*<PrefixIcon animatedProps={animatedProps} width={22} height={22} />*/}
-				<EmailIcon animatedProps={animatedProps} width={22} height={22} />
+				<Prefix animatedProps={animatedProps} width={22} height={22} />
 				<TextInput className='flex-1 h-full'
 					placeholder={props.placeholder}
 					ref={textInputRef}

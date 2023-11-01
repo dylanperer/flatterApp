@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "svgr": "npx @svgr/cli assets/svgs --out-dir lib/common/icons --icon --typescript --native --ignore-existing"
+    "svgr": "npx @svgr/cli assets/svgs --out-dir lib/common/icons --icon --typescript --native --ignore-existing --ref"
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",

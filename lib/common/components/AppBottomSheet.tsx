@@ -9,6 +9,7 @@ import Animated, {
 	useSharedValue,
 	withSpring
 } from 'react-native-reanimated';
+import { IAppComponent } from '../../utils/interfaces';
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 const DELTA_Y_MAX = -SCREEN_HEIGHT;
