@@ -8,39 +8,38 @@ import Animated, {
 	withTiming
 } from 'react-native-reanimated';
 import { AppInteractiveLabel } from './AppInteractiveLabel';
-import { LockIcon } from '../icons';
 import { IAppComponent } from '../../utils/interfaces';
 import { useIconAnimationAdapter } from '../hooks/useIconAnimationAdapter';
 
 interface IAppInputField extends Partial<TextInputProps>, IAppComponent {
-	prefix?: any;
-	postfix?: never;
+  prefix?: any;
+  postfix?: any;
 }
 
 export const AppInputField: React.FC<IAppInputField> = (props) => {
 	const textInputRef = useRef(null);
 
-	const deltaColor = useSharedValue<string>(AppColors.stone[400]);
+	const deltaColor = useSharedValue<string>(AppColors.stone[350]);
 
 	const onFocus = () => {
 		deltaColor.value = withTiming(AppColors.main[500], { duration: 300 });
 	};
 
 	const onBlur = () => {
-		deltaColor.value = withTiming(AppColors.stone[400], { duration: 300 });
+		deltaColor.value = withTiming(AppColors.stone[350], { duration: 300 });
 	};
 
-	const Prefix = props.prefix;
-	const {adapter} = useIconAnimationAdapter();
+	const Prefix = props.prefix ?? null;
+	const { adapter } = useIconAnimationAdapter();
 	const animatedProps = useAnimatedProps(() => ({
 		fill: deltaColor.value
-	}),[], adapter);
+	}), [], adapter);
 
 	return (
-		<TouchableOpacity className='h-8 flex flex-col justify-between items-center flex-1'
+		<TouchableOpacity className='h-8 flex flex-col justify-between items-center'
 			onPress={() => textInputRef.current.focus()}>
 			<View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
-				<Prefix animatedProps={animatedProps} width={22} height={22} />
+				{props.prefix && <Prefix animatedProps={animatedProps} />}
 				<TextInput className='flex-1 h-full'
 					placeholder={props.placeholder}
 					ref={textInputRef}
@@ -49,8 +48,7 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
 					//@ts-ignore
 					style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }}
 					placeholderTextColor={AppColors.stone[400]} />
-				<AppInteractiveLabel onClick={() => {
-				}}>{'Forgot?'}</AppInteractiveLabel>
+				{props.postfix}
 			</View>
 			<Animated.View className='w-full'
 				//@ts-ignore

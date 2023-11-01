@@ -10,7 +10,7 @@ export const Main: React.FC<PropsWithChildren<{}>> = (props) => {
 	return <GestureHandlerRootView
 		className='bg-stone-100 w-full h-full max-h-full overflow-hidden flex justify-center items-center'>
 		<ScrollView>
-			<View style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH }}>
+			<View style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH , maxWidth: '450'}}>
 				{props.children}
 			</View>
 		</ScrollView>
