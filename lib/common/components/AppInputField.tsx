@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { TextInput, TouchableOpacity, Text, View, Image } from 'react-native';
+import React, { ReactNode, useRef } from 'react';
+import { TextInput, TouchableOpacity, Text, View, Image, TextInputProps } from 'react-native';
 import EmailIcon from '../icons/EmailIcon';
 import { AppColors } from '../../utils/constants/styles/AppColors';
 import Animated, {
@@ -7,12 +7,16 @@ import Animated, {
 	useSharedValue,
 	withTiming
 } from 'react-native-reanimated';
+import { AppInteractiveLabel } from './AppInteractiveLabel';
+import { LockIcon } from '../icons';
+import { IAppComponent } from '../../utils/interfaces';
 
-interface IAppInputField extends Partial<TextInput>, IAppComponent {
-
+interface IAppInputField extends Partial<TextInputProps>, IAppComponent {
+	prefix?: any;
+	postfix?: never;
 }
 
-export const AppInputField: React.FC<IAppInputField> = ({ props }) => {
+export const AppInputField: React.FC<IAppInputField> = (props) => {
 	const textInputRef = useRef(null);
 
 	const deltaColor = useSharedValue<string>(AppColors.stone[400]);
@@ -29,10 +33,13 @@ export const AppInputField: React.FC<IAppInputField> = ({ props }) => {
 		fill: deltaColor.value
 	}));
 
+	const PrefixIcon = props.prefix ?? null;
+
 	return (
-		<TouchableOpacity className='h-8 flex flex-col justify-between items-center w-full'
+		<TouchableOpacity className='h-8 flex flex-col justify-between items-center flex-1'
 			onPress={() => textInputRef.current.focus()}>
-			<View className={'h-8 flex flex-row justify-between items-center w-full gap-2'}>
+			<View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
+				{/*<PrefixIcon animatedProps={animatedProps} width={22} height={22} />*/}
 				<EmailIcon animatedProps={animatedProps} width={22} height={22} />
 				<TextInput className='flex-1 h-full'
 					placeholder={props.placeholder}
@@ -42,9 +49,8 @@ export const AppInputField: React.FC<IAppInputField> = ({ props }) => {
 					//@ts-ignore
 					style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }}
 					placeholderTextColor={AppColors.stone[400]} />
-				<TouchableOpacity className='h-full flex justify-center'>
-					<Text className='text-test' style={{ fontFamily: 'Satoshi-Medium' }}>{'Forgot?'}</Text>
-				</TouchableOpacity>
+				<AppInteractiveLabel onClick={() => {
+				}}>{'Forgot?'}</AppInteractiveLabel>
 			</View>
 			<Animated.View className='w-full'
 				//@ts-ignore

@@ -17,7 +17,7 @@ interface IBottomSheet extends IAppComponent {
 
 }
 
-export const BottomSheet: React.FC<IBottomSheet> = (props) => {
+export const AppBottomSheet: React.FC<IBottomSheet> = (props) => {
 	const context = useSharedValue<{ y: number }>({ y: 0 });
 	const yDelta = useSharedValue<number>(0);
 
