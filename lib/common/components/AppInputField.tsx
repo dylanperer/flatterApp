@@ -40,9 +40,10 @@ export const AppInputField: React.FC<IAppInputField> = ({ props }) => {
                    onFocus={onFocus}
                    onBlur={onBlur}
           //@ts-ignore
-                   style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }} placeholderTextColor={AppColors.stone[400]}/>
+                   style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }}
+                   placeholderTextColor={AppColors.stone[400]} />
         <TouchableOpacity className='h-full flex justify-center'>
-          <Text className='text-test' style={{fontFamily: 'Satoshi-Medium'}}>{'Forgot?'}</Text>
+          <Text className='text-test' style={{ fontFamily: 'Satoshi-Medium' }}>{'Forgot?'}</Text>
         </TouchableOpacity>
       </View>
       <Animated.View className='w-full'
