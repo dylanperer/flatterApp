@@ -6,14 +6,14 @@ import { flex } from 'nativewind/dist/postcss/to-react-native/properties/flex';
 import { EmailIcon } from './common/icons';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from './utils/device';
 
-export const Main: React.FC<PropsWithChildren<{}>> = (props) => {
-	return <GestureHandlerRootView
-		className='bg-stone-100 w-full h-full max-h-full overflow-hidden flex justify-center items-center'>
-		<ScrollView>
-			<View style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH, maxWidth: '450' }}>
-				{props.children}
-			</View>
-		</ScrollView>
-		{/*<AppBottomSheet />*/}
-	</GestureHandlerRootView>;
+export const Main: React.FC<PropsWithChildren> = (props) => {
+   return <GestureHandlerRootView
+      className='bg-stone-100 w-full h-full max-h-full overflow-hidden flex justify-center items-center'>
+      <ScrollView>
+         <View style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH, maxWidth: 450 }}>
+            {props.children}
+         </View>
+      </ScrollView>
+      {/*<AppBottomSheet />*/}
+   </GestureHandlerRootView>;
 };

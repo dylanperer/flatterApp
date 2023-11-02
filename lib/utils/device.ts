@@ -8,14 +8,14 @@ export enum Device {
 }
 
 const getDevice = () => {
-	switch (Platform.OS) {
-	case 'ios':
-		return Device.IOS;
-	case 'android':
-		return Device.ANDROID;
-	case 'web':
-		return Device.WEB;
-	}
+   switch (Platform.OS) {
+   case 'ios':
+      return Device.IOS;
+   case 'android':
+      return Device.ANDROID;
+   case 'web':
+      return Device.WEB;
+   }
 };
 
 export const UserDevice: Device = getDevice();

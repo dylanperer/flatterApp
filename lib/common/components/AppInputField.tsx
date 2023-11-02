@@ -3,9 +3,9 @@ import { TextInput, TouchableOpacity, Text, View, Image, TextInputProps } from '
 import EmailIcon from '../icons/EmailIcon';
 import { AppColors } from '../../utils/constants/styles/AppColors';
 import Animated, {
-	useAnimatedProps,
-	useSharedValue,
-	withTiming
+   useAnimatedProps,
+   useSharedValue,
+   withTiming
 } from 'react-native-reanimated';
 import { AppInteractiveLabel } from './AppInteractiveLabel';
 import { IAppComponent } from '../../utils/interfaces';
@@ -17,47 +17,47 @@ interface IAppInputField extends Partial<TextInputProps>, IAppComponent {
 }
 
 export const AppInputField: React.FC<IAppInputField> = (props) => {
-	const textInputRef = useRef(null);
+   const textInputRef = useRef(null);
 
-	const deltaColor = useSharedValue<string>(AppColors.stone[350]);
+   const deltaColor = useSharedValue<string>(AppColors.stone[350]);
 
-	const onFocus = () => {
-		deltaColor.value = withTiming(AppColors.main[500], { duration: 300 });
-	};
+   const onFocus = () => {
+      deltaColor.value = withTiming(AppColors.main[500], { duration: 300 });
+   };
 
-	const onBlur = () => {
-		deltaColor.value = withTiming(AppColors.stone[350], { duration: 300 });
-	};
+   const onBlur = () => {
+      deltaColor.value = withTiming(AppColors.stone[350], { duration: 300 });
+   };
 
-	const Prefix = props.prefix ?? null;
-	const { adapter } = useIconAnimationAdapter();
-	const animatedProps = useAnimatedProps(() => ({
-		fill: deltaColor.value
-	}), [], adapter);
+   const Prefix = props.prefix ?? null;
+   const { adapter } = useIconAnimationAdapter();
+   const animatedProps = useAnimatedProps(() => ({
+      fill: deltaColor.value
+   }), [], adapter);
 
-	return (
-		<TouchableOpacity className='h-8 flex flex-col justify-between items-center'
-			onPress={() => textInputRef.current.focus()}>
-			<View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
-				{props.prefix && <Prefix animatedProps={animatedProps} />}
-				<TextInput className='flex-1 h-full'
-					placeholder={props.placeholder}
-					ref={textInputRef}
-					onFocus={onFocus}
-					onBlur={onBlur}
-					//@ts-ignore
-					style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }}
-					placeholderTextColor={AppColors.stone[400]} />
-				{props.postfix}
-			</View>
-			<Animated.View className='w-full'
-				//@ts-ignore
-				style={{
-					borderBottomWidth: 1,
-					borderColor: deltaColor
-				}}
-			/>
-		</TouchableOpacity>
-	);
+   return (
+      <TouchableOpacity className='h-8 flex flex-col justify-between items-center'
+         onPress={() => textInputRef.current.focus()}>
+         <View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
+            {props.prefix && <Prefix animatedProps={animatedProps} />}
+            <TextInput className='flex-1 h-full'
+               placeholder={props.placeholder}
+               ref={textInputRef}
+               onFocus={onFocus}
+               onBlur={onBlur}
+               //@ts-ignore
+               style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }}
+               placeholderTextColor={AppColors.stone[400]} />
+            {props.postfix}
+         </View>
+         <Animated.View className='w-full'
+            //@ts-ignore
+            style={{
+               borderBottomWidth: 1,
+               borderColor: deltaColor
+            }}
+         />
+      </TouchableOpacity>
+   );
 };
 
