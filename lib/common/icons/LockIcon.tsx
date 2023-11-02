@@ -14,6 +14,7 @@ const SvgLockIcon = (props: IAnimatedSvg, ref: Ref<SVGSVGElement>) => (
 		height={22}
 		fill="none"
 		viewBox="0 0 20 20"
+		//@ts-ignore
 		ref={ref}
 		{...props}>
 		<AnimatedPath

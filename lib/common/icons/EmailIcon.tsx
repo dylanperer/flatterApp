@@ -14,6 +14,7 @@ const SvgEmailIcon = (props: IAnimatedSvg, ref: Ref<SVGSVGElement>) => {
 			width={24}
 			height={24}
 			viewBox='0 -960 960 960'
+			//@ts-ignore
 			ref={ref}
 			{...props}
 		>
