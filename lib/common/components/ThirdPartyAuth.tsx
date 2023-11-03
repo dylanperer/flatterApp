@@ -25,7 +25,7 @@ export const ThirdPartyAuth: FC<IThirdPartAuth> = (props) => {
          </TouchableOpacity>
       </View>
       <View className='flex flex-row'>
-         {props.postfixText && <AppText _className='text-stone-500 mr-2'>{props.postfixText}</AppText>}
+         {props.postfixText && <AppText _className='text-stone-500'>{props.postfixText}</AppText>}
          {props.postfixInlineSlot}
       </View>
    </View>;

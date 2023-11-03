@@ -14,15 +14,17 @@ interface ISignInScreen {
 }
 
 export const SignInScreen: React.FC = () => {
+
+
    return (
       <View
-         className='w-full flex flex-col justify-start items-center h-full px-2 py-16'>
-         <View className='mb-16'>
+         className='w-full flex flex-col justify-start items-center h-full px-3 py-10 bg-white dark:bg-black'>
+         <View className='mb-10'>
             <Logo width={65} height={65} />
          </View>
          <View className='self-start flex flex-col gap-y-2 mb-16'>
-            <AppText _frontFamily={AppFont.SatoshiMedium} _className='text-3xl'>{'Sign in'}</AppText>
-            <AppText>{'Hello there! Let\'s get in back to it'}</AppText>
+            <AppText _frontFamily={AppFont.SatoshiMedium} _className='text-3xl mb-2'>{'Sign in'}</AppText>
+            <AppText _className='text-stone-500 text-md'>{'Hello there! Let\'s get in back to it'}</AppText>
          </View>
          <View className='flex flex-col w-full'>
             <AppInputField prefix={EmailIcon} placeholder='email' _className='mb-8' />
@@ -34,20 +36,21 @@ export const SignInScreen: React.FC = () => {
                      onClick={() => {
                      }}>
                      {'Forgot?'}
-                  </AppInteractiveLabel>}
+                  </AppInteractiveLabel>
+               }
             />
             <AppCheckBox label='Remember me' _className='self-end mb-8' onChange={() => {
             }} />
-         </View>
-         <View>
-         </View>
-         <View>
-            <AppButton />
-         </View>
-         <View>
-            <ThirdPartyAuth prefixText='Or, login with...' postfixText={'Don\'t have one yet?'}
-               postfixInlineSlot={<AppInteractiveLabel onClick={() => {
-               }}>{'Join now'}</AppInteractiveLabel>} />
+            <AppButton _className='mb-16' onClick={()=>{
+               // toggleColorScheme();
+               console.log('@> ok??');
+
+            }}/>
+            <View className=''>
+               <ThirdPartyAuth prefixText='Or, login with...' postfixText='Ready to connect with new people? '
+                  postfixInlineSlot={<AppInteractiveLabel onClick={() => {
+                  }}>{'Join now!'}</AppInteractiveLabel>} />
+            </View>
          </View>
       </View>);
 };

@@ -4,6 +4,7 @@ import { Main } from './lib/Main';
 import React, { useCallback } from 'react';
 import { SignInScreen } from './lib/features/authentication/screens/SignInScreen';
 import { StatusBar } from 'expo-status-bar';
+import { GlobalContextProvider } from './lib/common/contexts/GlobalContext';
 
 // Ensure we import the CSS for Tailwind so it's included in hot module reloads.
 //@ts-ignore
@@ -28,9 +29,11 @@ export default function App() {
    }
 
    return (
-      <Main>
-         <StatusBar style="auto"/>
-         <SignInScreen />
-      </Main>
+      <GlobalContextProvider>
+         <Main>
+            <StatusBar style='auto' />
+            <SignInScreen />
+         </Main>
+      </GlobalContextProvider>
    );
 }

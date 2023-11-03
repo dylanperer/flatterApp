@@ -47,7 +47,7 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
                onFocus={onFocus}
                onBlur={onBlur}
                //@ts-ignore
-               style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Regular', color: AppColors.stone[700] }}
+               style={{ outlineStyle: 'none', fontFamily: 'Satoshi-Medium', color: AppColors.stone[700] }}
                placeholderTextColor={AppColors.stone[400]} />
             {props.postfix}
          </View>
