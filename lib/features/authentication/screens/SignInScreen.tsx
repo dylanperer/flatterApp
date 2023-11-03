@@ -10,7 +10,7 @@ import { AppButton } from '../../../common/components/AppButton';
 import { ThirdPartyAuth } from '../../../common/components/ThirdPartyAuth';
 import { AppColorScheme, useGlobalContext } from '../../../common/contexts/GlobalContext';
 import { twMerge } from 'tailwind-merge';
-import { darkMode } from '../../../utils/functions';
+import { withDarkMode } from '../../../utils/functions';
 
 interface ISignInScreen {
 

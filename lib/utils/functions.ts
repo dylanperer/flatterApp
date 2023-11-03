@@ -5,7 +5,7 @@ export function strMerge(...args: string[]): string {
 }
 
 
-export function darkMode(currentColorScheme: AppColorScheme, className: string) {
+export function withDarkMode(currentColorScheme: AppColorScheme, className: string) {
    if (currentColorScheme === AppColorScheme.DARK) {
       return className;
    }
