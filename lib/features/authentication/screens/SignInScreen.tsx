@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput, TouchableOpacity, Text, View, Image } from 'react-native';
+import { View } from 'react-native';
 import { AppInputField } from '../../../common/components/AppInputField';
 import { AppText } from '../../../common/components/AppText';
 import { EmailIcon, LockIcon, Logo } from '../../../common/icons';
@@ -8,19 +8,21 @@ import { AppFont } from '../../../utils/constants/styles/AppFont';
 import { AppCheckBox } from '../../../common/components/AppCheckBox';
 import { AppButton } from '../../../common/components/AppButton';
 import { ThirdPartyAuth } from '../../../common/components/ThirdPartyAuth';
-import { useGlobalContext } from '../../../common/contexts/GlobalContext';
+import { AppColorScheme, useGlobalContext } from '../../../common/contexts/GlobalContext';
+import { twMerge } from 'tailwind-merge';
+import { darkMode } from '../../../utils/functions';
 
 interface ISignInScreen {
 
 }
 
 export const SignInScreen: React.FC = () => {
-
-   const { toggleColorScheme } = useGlobalContext();
+   const { colorScheme: [cs, sCs] } = useGlobalContext();
 
    return (
       <View
-         className='w-full flex flex-col justify-start items-center h-full px-3 py-10 bg-main-500 dark:bg-slate-800'>
+         className="dark w-full flex flex-col justify-start items-center h-full px-3 py-10"
+      >
          <View className='mb-10'>
             <Logo width={65} height={65} />
          </View>
@@ -43,7 +45,7 @@ export const SignInScreen: React.FC = () => {
             />
             <AppCheckBox label='Remember me' _className='self-end mb-8' onChange={() => {
             }} />
-            <AppButton _className='mb-16' onClick={toggleColorScheme} />
+            <AppButton _className='mb-16' onClick={() => sCs(AppColorScheme.DARK)} />
             <View className=''>
                <ThirdPartyAuth prefixText='Or, login with...' postfixText='Ready to connect with new people? '
                   postfixInlineSlot={<AppInteractiveLabel onClick={() => {

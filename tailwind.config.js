@@ -11,6 +11,9 @@ module.exports = {
             main: { 500: '#6E3FFE' },
             stone: {
                350: '#cecbc9'
+            },
+            darkMode:{
+               900: '#131313'
             }
          }
       }

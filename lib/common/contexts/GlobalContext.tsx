@@ -1,25 +1,21 @@
 import React, { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
-import { useColorScheme } from 'nativewind';
+
+export enum AppColorScheme {
+   LIGHT = 'light',
+   DARK = 'dark'
+}
 
 interface IGlobalContext {
-  colorScheme: any,
-  toggleColorScheme: () => void
+   colorScheme: [AppColorScheme, React.Dispatch<React.SetStateAction<AppColorScheme>>]
 }
 
 const GlobalContext = createContext<IGlobalContext | undefined>(undefined);
 
 export const GlobalContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
-   const { colorScheme, toggleColorScheme } = useColorScheme();
+   const colorScheme = useState<AppColorScheme>(AppColorScheme.LIGHT);
 
-   useEffect(() => {
-      setInterval(()=> {
-         toggleColorScheme();
-         console.log('WTFFFF', colorScheme);
-
-      }, 3000);
-   }, []);
    return (
-      <GlobalContext.Provider value={{ colorScheme, toggleColorScheme }}>
+      <GlobalContext.Provider value={{colorScheme}}>
          {children}
       </GlobalContext.Provider>
    );
