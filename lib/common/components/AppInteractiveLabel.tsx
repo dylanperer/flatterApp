@@ -5,7 +5,7 @@ import { TextProps } from 'react-native/Libraries/Text/Text';
 import { twMerge } from 'tailwind-merge';
 import { IAppComponent } from '../../utils/interfaces';
 
-interface IAppInteractiveLabel extends TextProps, IAppComponent {
+export interface IAppInteractiveLabel extends TextProps, IAppComponent {
   onClick: () => void;
 }
 

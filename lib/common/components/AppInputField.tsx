@@ -10,6 +10,7 @@ import Animated, {
 import { AppInteractiveLabel } from './AppInteractiveLabel';
 import { IAppComponent } from '../../utils/interfaces';
 import { useIconAnimationAdapter } from '../hooks/useIconAnimationAdapter';
+import { twMerge } from 'tailwind-merge';
 
 interface IAppInputField extends Partial<TextInputProps>, IAppComponent {
   prefix?: any;
@@ -36,7 +37,7 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
    }), [], adapter);
 
    return (
-      <TouchableOpacity className='h-8 flex flex-col justify-between items-center'
+      <TouchableOpacity className={twMerge('h-8 flex flex-col justify-between items-center', props._className)}
          onPress={() => textInputRef.current.focus()}>
          <View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
             {props.prefix && <Prefix animatedProps={animatedProps} />}

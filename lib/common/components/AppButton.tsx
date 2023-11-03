@@ -11,8 +11,8 @@ export interface IAppButton extends IAppComponent {
 
 export const AppButton: FC<IAppButton> = () => {
    return <TouchableOpacity className='flex justify-center items-center w-50 h-14 rounded-full bg-main-500' style={{
-      shadowColor: AppColors.stone[900],
-      shadowOpacity: .3,
+      shadowColor: AppColors.stone[800],
+      shadowOpacity: .15,
       shadowRadius: 4,
       elevation: 5,
    }}>

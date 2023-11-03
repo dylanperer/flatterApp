@@ -13,11 +13,11 @@ interface IAppCheckBox extends IAppComponent {
 
 export const AppCheckBox: React.FC<IAppCheckBox> = (props) => {
    const isActive = useRef<boolean>(false);
-   const activeColorDelta = useSharedValue<string>(AppColors.stone[200]);
+   const activeColorDelta = useSharedValue<string>(AppColors.stone[100]);
 
    const handleState = () => {
       if (isActive.current) {
-         activeColorDelta.value = withTiming(AppColors.stone[200]);
+         activeColorDelta.value = withTiming(AppColors.stone[100]);
          isActive.current = false;
          props.onChange(false);
       } else {

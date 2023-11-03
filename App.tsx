@@ -23,7 +23,6 @@ export default function App() {
       'Satoshi-Regular': require('./assets/fonts/Satoshi-Regular.ttf')
    });
 
-
    if (!fontsLoaded && !fontError) {
       return null;
    }

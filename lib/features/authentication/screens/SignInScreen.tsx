@@ -7,6 +7,8 @@ import { AppInteractiveLabel } from '../../../common/components/AppInteractiveLa
 import { AppFont } from '../../../utils/constants/styles/AppFont';
 import { AppCheckBox } from '../../../common/components/AppCheckBox';
 import { AppButton } from '../../../common/components/AppButton';
+import { ThirdPartyAuth } from '../../../common/components/ThirdPartyAuth';
+
 interface ISignInScreen {
 
 }
@@ -22,24 +24,30 @@ export const SignInScreen: React.FC = () => {
             <AppText _frontFamily={AppFont.SatoshiMedium} _className='text-3xl'>{'Sign in'}</AppText>
             <AppText>{'Hello there! Let\'s get in back to it'}</AppText>
          </View>
-         <View className='flex flex-col w-full gap-y-12'>
-            <View>
-               <AppInputField prefix={EmailIcon} placeholder='email' />
-            </View>
-            <View>
-               <AppInputField prefix={LockIcon}
-                  postfix={
-                     <AppInteractiveLabel
-                        onClick={() => {
-                        }}>
-                        {'Forgot?'}
-                     </AppInteractiveLabel>} placeholder='password' />
-            </View>
-            <View>
-               <AppCheckBox label='Remember me' _className='self-end' onChange={() => {
-               }} />
-            </View>
+         <View className='flex flex-col w-full'>
+            <AppInputField prefix={EmailIcon} placeholder='email' _className='mb-8' />
+            <AppInputField prefix={LockIcon}
+               _className='mb-8'
+               placeholder='password'
+               postfix={
+                  <AppInteractiveLabel
+                     onClick={() => {
+                     }}>
+                     {'Forgot?'}
+                  </AppInteractiveLabel>}
+            />
+            <AppCheckBox label='Remember me' _className='self-end mb-8' onChange={() => {
+            }} />
+         </View>
+         <View>
+         </View>
+         <View>
             <AppButton />
+         </View>
+         <View>
+            <ThirdPartyAuth prefixText='Or, login with...' postfixText={'Don\'t have one yet?'}
+               postfixInlineSlot={<AppInteractiveLabel onClick={() => {
+               }}>{'Join now'}</AppInteractiveLabel>} />
          </View>
       </View>);
 };

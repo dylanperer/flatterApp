@@ -1,4 +1,6 @@
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+  "compilerOptions": {
+    "sourceMap": true
+  },
+  "extends": "expo/tsconfig.base",
 }
