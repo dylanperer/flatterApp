@@ -1,14 +1,23 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { AppBottomSheet } from './common/components/AppBottomSheet';
-import { flex } from 'nativewind/dist/postcss/to-react-native/properties/flex';
-import { EmailIcon } from './common/icons';
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from './utils/device';
+import { Device, SCREEN_HEIGHT, SCREEN_WIDTH } from './utils/device';
+import { twMerge } from 'tailwind-merge';
+import { useGlobalContext } from './common/contexts/GlobalContext';
 
 export const Main: React.FC<PropsWithChildren> = (props) => {
+   const { colorScheme } = useGlobalContext();
+
+   const [webColorScheme, sWebColorScheme] = useState<string>('light');
+   useEffect(() => {
+      if (Device.WEB) {
+         sWebColorScheme(colorScheme);
+      }
+   }, [colorScheme]);
+
    return <GestureHandlerRootView
-      className='bg-stone-100 w-full h-full max-h-full overflow-hidden flex justify-center items-center'>
+      className={twMerge('bg-stone-100 w-full h-full max-h-full overflow-hidden flex justify-center items-center',
+         webColorScheme)}>
       <ScrollView>
          <View style={{ height: SCREEN_HEIGHT, width: SCREEN_WIDTH, maxWidth: 450 }}>
             {props.children}

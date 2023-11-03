@@ -8,6 +8,7 @@ import { AppFont } from '../../../utils/constants/styles/AppFont';
 import { AppCheckBox } from '../../../common/components/AppCheckBox';
 import { AppButton } from '../../../common/components/AppButton';
 import { ThirdPartyAuth } from '../../../common/components/ThirdPartyAuth';
+import { useGlobalContext } from '../../../common/contexts/GlobalContext';
 
 interface ISignInScreen {
 
@@ -15,10 +16,11 @@ interface ISignInScreen {
 
 export const SignInScreen: React.FC = () => {
 
+   const { toggleColorScheme } = useGlobalContext();
 
    return (
       <View
-         className='w-full flex flex-col justify-start items-center h-full px-3 py-10 bg-white dark:bg-black'>
+         className='w-full flex flex-col justify-start items-center h-full px-3 py-10 bg-main-500 dark:bg-slate-800'>
          <View className='mb-10'>
             <Logo width={65} height={65} />
          </View>
@@ -41,11 +43,7 @@ export const SignInScreen: React.FC = () => {
             />
             <AppCheckBox label='Remember me' _className='self-end mb-8' onChange={() => {
             }} />
-            <AppButton _className='mb-16' onClick={()=>{
-               // toggleColorScheme();
-               console.log('@> ok??');
-
-            }}/>
+            <AppButton _className='mb-16' onClick={toggleColorScheme} />
             <View className=''>
                <ThirdPartyAuth prefixText='Or, login with...' postfixText='Ready to connect with new people? '
                   postfixInlineSlot={<AppInteractiveLabel onClick={() => {

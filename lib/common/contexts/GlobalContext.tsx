@@ -14,8 +14,7 @@ export const GlobalContextProvider: React.FC<PropsWithChildren> = ({ children })
    useEffect(() => {
       setInterval(()=> {
          toggleColorScheme();
-        
-         console.log('>>', colorScheme);
+         console.log('WTFFFF', colorScheme);
 
       }, 3000);
    }, []);
