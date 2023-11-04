@@ -3,8 +3,8 @@ import { Ref } from 'react';
 import { AppFont } from './constants/styles/AppFont';
 
 export interface IAppComponent {
-   _className?: string
-   _frontFamily?: AppFont
+   class?: string
+   frontFamily?: AppFont
 }
 
 export interface IAnimatedSvg extends SvgProps {

@@ -27,13 +27,13 @@ export const SignInScreen: React.FC = () => {
             <Logo width={65} height={65} />
          </View>
          <View className='self-start flex flex-col gap-y-2 mb-16'>
-            <AppText _frontFamily={AppFont.SatoshiMedium} _className='text-3xl mb-2'>{'Sign in'}</AppText>
-            <AppText _className='text-stone-500 text-md'>{'Hello there! Let\'s get in back to it'}</AppText>
+            <AppText frontFamily={AppFont.SatoshiMedium} class='text-3xl mb-2'>{'Sign in'}</AppText>
+            <AppText class='text-stone-500 text-md'>{'Hello there! Let\'s get in back to it'}</AppText>
          </View>
          <View className='flex flex-col w-full'>
-            <AppInputField prefix={EmailIcon} placeholder='email' _className='mb-8' />
+            <AppInputField prefix={EmailIcon} placeholder='email' class='mb-8' />
             <AppInputField prefix={LockIcon}
-               _className='mb-8'
+               class='mb-8'
                placeholder='password'
                postfix={
                   <AppInteractiveLabel
@@ -43,9 +43,9 @@ export const SignInScreen: React.FC = () => {
                   </AppInteractiveLabel>
                }
             />
-            <AppCheckBox label='Remember me' _className='self-end mb-8' onChange={() => {
+            <AppCheckBox label='Remember me' class='self-end mb-8' onChange={() => {
             }} />
-            <AppButton _className='mb-16' onClick={() => sCs(AppColorScheme.DARK)} />
+            <AppButton class='mb-16' onClick={() => sCs(AppColorScheme.DARK)} />
             <View className=''>
                <ThirdPartyAuth prefixText='Or, login with...' postfixText='Ready to connect with new people? '
                   postfixInlineSlot={<AppInteractiveLabel onClick={() => {

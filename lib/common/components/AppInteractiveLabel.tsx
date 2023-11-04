@@ -10,7 +10,7 @@ export interface IAppInteractiveLabel extends TextProps, IAppComponent {
 }
 
 export const AppInteractiveLabel: React.FC<IAppInteractiveLabel> = (props) => {
-   return <TouchableOpacity className={twMerge('flex justify-center items-center', props._className)}>
+   return <TouchableOpacity className={twMerge('flex justify-center items-center', props.class)}>
       <Text {...props} style={{ fontFamily: 'Satoshi-Bold' }} className="text-main-500">{props.children}</Text>
    </TouchableOpacity>;
 };

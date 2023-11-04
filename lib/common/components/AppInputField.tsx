@@ -37,7 +37,7 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
    }), [], adapter);
 
    return (
-      <TouchableOpacity className={twMerge('h-8 flex flex-col justify-between items-center', props._className)}
+      <TouchableOpacity className={twMerge('h-8 flex flex-col justify-between items-center', props.class)}
          onPress={() => textInputRef.current.focus()}>
          <View className='h-8 flex flex-row justify-between items-center w-full gap-2'>
             {props.prefix && <Prefix animatedProps={animatedProps} />}

@@ -1,9 +1,8 @@
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import { ScrollView, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { Device, SCREEN_HEIGHT, SCREEN_WIDTH } from './utils/device';
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from './utils/device';
 import { twMerge } from 'tailwind-merge';
-import { useColorScheme } from 'nativewind';
 import { useGlobalContext } from './common/contexts/GlobalContext';
 import { withDarkMode } from './utils/functions';
 
