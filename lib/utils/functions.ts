@@ -10,3 +10,7 @@ export function withDarkMode(currentColorScheme: AppColorScheme, className: stri
       return className;
    }
 }
+
+export const delay = (time:number)=>{
+   return new Promise(r => setTimeout(r, time));
+};

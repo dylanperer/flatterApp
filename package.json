@@ -15,8 +15,6 @@
     "@tanstack/react-query": "^5.4.3",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
-    "lottie-react": "^2.4.0",
-    "lottie-react-native": "5.1.6",
     "moti": "^0.26.1",
     "nativewind": "^2.0.11",
     "react": "18.2.0",

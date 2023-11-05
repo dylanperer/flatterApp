@@ -10,7 +10,8 @@ import { AppButton } from '../../../common/components/AppButton';
 import { ThirdPartyAuth } from '../../../common/components/ThirdPartyAuth';
 import { AppColorScheme, useGlobalContext } from '../../../common/contexts/GlobalContext';
 import { twMerge } from 'tailwind-merge';
-import { withDarkMode } from '../../../utils/functions';
+import {delay, withDarkMode} from '../../../utils/functions';
+import Animated from 'react-native-reanimated';
 
 interface ISignInScreen {
 
@@ -45,7 +46,9 @@ export const SignInScreen: React.FC = () => {
             />
             <AppCheckBox label='Remember me' class='self-end mb-8' onChange={() => {
             }} />
-            <AppButton class='mb-16' onClick={() => sCs(AppColorScheme.DARK)} />
+            <AppButton class='mb-16' onClick={async () => {
+               await delay(5000);
+            }} />
             <View className=''>
                <ThirdPartyAuth prefixText='Or, login with...' postfixText='Ready to connect with new people? '
                   postfixInlineSlot={<AppInteractiveLabel onClick={() => {

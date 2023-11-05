@@ -1,22 +1,28 @@
-import { IAppComponent } from '../../utils/interfaces';
-import React, { FC } from 'react';
-import { TouchableOpacity, View } from 'react-native';
-import { AppText } from './AppText';
-import { AppFont } from '../../utils/constants/styles/AppFont';
-import { AppColors } from '../../utils/constants/styles/AppColors';
-import { twMerge } from 'tailwind-merge';
-import { Test } from './Test';
-import { Device, UserDevice } from '../../utils/device';
-import { UseLottie } from '../hooks/useLottie';
+import {ComponentState, IAppComponent} from '../../utils/interfaces';
+import React, {FC, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import {AppColors} from '../../utils/constants/styles/AppColors';
+import {twMerge} from 'tailwind-merge';
+import {Spinner} from './Spinner';
+import {AppText} from './AppText';
+import {AppFont} from '../../utils/constants/styles/AppFont';
+import {FadeIn} from './FadeIn';
 
 export interface IAppButton extends IAppComponent {
-  onClick: () => void;
+  onClick: () => Promise<any>;
 }
 
 export const AppButton: FC<IAppButton> = (props) => {
-   const { Lottie } = UseLottie();
+   const [state, sState] = useState<ComponentState>(props.state);
+
+   const onClick = async ()=>{
+      sState(ComponentState.Loading);
+      await props.onClick();
+      sState(ComponentState.Default);
+   };
 
    return <TouchableOpacity
+      disabled={state===ComponentState.Disabled || state === ComponentState.Loading}
       className={twMerge('flex justify-center items-center w-50 h-14 rounded-full bg-main-500', props.class)}
       style={{
          shadowColor: AppColors.stone[800],
@@ -24,15 +30,13 @@ export const AppButton: FC<IAppButton> = (props) => {
          shadowRadius: 4,
          elevation: 5
       }}
-      onPress={props.onClick}
+      onPress={onClick}
    >
-      {/*<Animation*/}
-      {/*   s*/}
-      {/*   loop*/}
-      {/*   autoplay*/}
-      {/*/>*/}
-      {/*<Anim source={require('../../../assets/lottie/spinner.json')} autoPlay loop/>*/}
-      {/*<AppText class='text-stone-200 text-lg' frontFamily={AppFont.SatoshiMedium}>{'Sign in'}</AppText>*/}
-      <Lottie class="w-20 h-20" source={require('../../../assets/lottie/spinner.json')}/>
+      {state === ComponentState.Loading && <Spinner/>}
+      {state !== ComponentState.Loading &&
+          <FadeIn duration={5000}>
+             <AppText class='text-stone-200 text-lg' frontFamily={AppFont.SatoshiMedium}>{'Sign in'}</AppText>
+          </FadeIn>
+      }
    </TouchableOpacity>;
 };
