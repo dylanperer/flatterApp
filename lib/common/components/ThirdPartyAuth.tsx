@@ -15,13 +15,13 @@ export const ThirdPartyAuth: FC<IThirdPartAuth> = (props) => {
       {props.prefixText && <AppText class='text-stone-500'>{props.prefixText}</AppText>}
       <View className='flex-row justify-between px-8 w-full'>
          <TouchableOpacity>
-            <GoogleIcon />
+            <GoogleIcon width={28} height={28} />
          </TouchableOpacity>
          <TouchableOpacity>
-            <FacebookIcon />
+            <FacebookIcon width={28} height={28}/>
          </TouchableOpacity>
          <TouchableOpacity>
-            <AppleIcon />
+            <AppleIcon width={28} height={28}/>
          </TouchableOpacity>
       </View>
       <View className='flex flex-row'>

@@ -17,7 +17,7 @@ interface ISignInScreen {
 
 }
 
-export const SignInScreen: React.FC = () => {
+export const SignUpScreen: React.FC = () => {
    const { colorScheme: [cs, sCs] } = useGlobalContext();
 
    return (
