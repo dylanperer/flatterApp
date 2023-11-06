@@ -1,23 +1,21 @@
 import React from 'react';
 import { View } from 'react-native';
-import { AppInputField } from '../../../common/components/AppInputField';
-import { AppText } from '../../../common/components/AppText';
-import { EmailIcon, LockIcon, Logo } from '../../../common/icons';
-import { AppInteractiveLabel } from '../../../common/components/AppInteractiveLabel';
-import { AppFont } from '../../../utils/constants/styles/AppFont';
-import { AppCheckBox } from '../../../common/components/AppCheckBox';
-import { AppButton } from '../../../common/components/AppButton';
-import { ThirdPartyAuth } from '../../../common/components/ThirdPartyAuth';
-import { AppColorScheme, useGlobalContext } from '../../../common/contexts/GlobalContext';
-import { twMerge } from 'tailwind-merge';
-import {delay, withDarkMode} from '../../../utils/functions';
-import Animated from 'react-native-reanimated';
+import {useGlobalContext} from '../../../common/contexts/GlobalContext';
+import {EmailIcon, LockIcon, Logo} from '../../../common/icons';
+import {AppText} from '../../../common/components/AppText';
+import {AppFont} from '../../../utils/constants/styles/AppFont';
+import {AppInputField} from '../../../common/components/AppInputField';
+import {AppInteractiveLabel} from '../../../common/components/AppInteractiveLabel';
+import {AppCheckBox} from '../../../common/components/AppCheckBox';
+import {AppButton} from '../../../common/components/AppButton';
+import {delay} from '../../../utils/functions';
+import {ThirdPartyAuth} from '../../../common/components/ThirdPartyAuth';
 
 interface ISignInScreen {
 
 }
 
-export const SignInScreen: React.FC = () => {
+const SignIn: React.FC = () => {
    const { colorScheme: [cs, sCs] } = useGlobalContext();
 
    return (
@@ -58,3 +56,4 @@ export const SignInScreen: React.FC = () => {
       </View>);
 };
 
+export default SignIn;

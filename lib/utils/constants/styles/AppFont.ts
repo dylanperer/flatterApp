@@ -4,4 +4,5 @@ export enum AppFont {
   SatoshiMedium = 'Satoshi-Medium',
   SatoshiBold = 'Satoshi-Bold',
   SatoshiBlack = 'Satoshi-Black',
+  Satoshi = 'Satoshi',
 }
