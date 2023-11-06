@@ -8,7 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "svgr": "npx @svgr/cli assets/svgs --out-dir lib/common/icons --icon --typescript --native --ignore-existing --ref",
-    "lint": "eslint ./lib --fix"
+    "lint": "eslint lib --fix"
   },
   "dependencies": {
     "@expo/webpack-config": "^19.0.0",
