@@ -14,7 +14,7 @@ export interface IAppComponent {
 }
 
 export interface IAnimatedSvg extends SvgProps {
-   animatedProps: any;
+   animatedprops: any;
 }
 
 export interface IAnimatedSvgRef extends SVGSVGElement {
