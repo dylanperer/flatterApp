@@ -24,7 +24,7 @@ export const ThirdPartyAuth: FC<IThirdPartAuth> = (props) => {
             <AppleIcon width={28} height={28}/>
          </TouchableOpacity>
       </View>
-      <View className='flex flex-row'>
+      <View className='flex flex-row justify-center items-center'>
          {props.postfixText && <AppText class='text-stone-500'>{props.postfixText}</AppText>}
          {props.postfixInlineSlot}
       </View>

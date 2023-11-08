@@ -9,20 +9,21 @@ import {AppFont} from '../../utils/constants/styles/AppFont';
 import {FadeIn} from './FadeIn';
 
 export interface IAppButton extends IAppComponent {
-  onClick: () => Promise<any>;
+    text: string;
+    onClick: () => Promise<any>;
 }
 
 export const AppButton: FC<IAppButton> = (props) => {
    const [state, sState] = useState<ComponentState>(props.state);
 
-   const onClick = async ()=>{
+   const onClick = async () => {
       sState(ComponentState.Loading);
       await props.onClick();
       sState(ComponentState.Default);
    };
 
    return <TouchableOpacity
-      disabled={state===ComponentState.Disabled || state === ComponentState.Loading}
+      disabled={state === ComponentState.Disabled || state === ComponentState.Loading}
       className={twMerge('flex justify-center items-center w-50 h-14 rounded-full bg-main-500', props.class)}
       style={{
          shadowColor: AppColors.stone[800],
@@ -34,9 +35,9 @@ export const AppButton: FC<IAppButton> = (props) => {
    >
       {state === ComponentState.Loading && <Spinner/>}
       {state !== ComponentState.Loading &&
-          <FadeIn duration={5000}>
-             <AppText class='text-stone-200 text-lg' frontFamily={AppFont.SatoshiMedium}>{'Sign in'}</AppText>
-          </FadeIn>
+            <FadeIn duration={5000}>
+               <AppText class='text-stone-200 text-lg' frontFamily={AppFont.SatoshiMedium}>{props.text}</AppText>
+            </FadeIn>
       }
    </TouchableOpacity>;
 };

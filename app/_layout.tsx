@@ -37,7 +37,7 @@ export default function AppEntry() {
                <Stack screenOptions={{
                   headerShown: false,
                   header: () => null,
-                  contentStyle: {backgroundColor: 'white'}
+                  contentStyle: {backgroundColor: 'white'},
                }}>
                   <Tabs.Screen name="(auth)"/>
                </Stack>

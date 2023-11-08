@@ -6,11 +6,11 @@ import { twMerge } from 'tailwind-merge';
 import { IAppComponent } from '../../utils/interfaces';
 
 export interface IAppInteractiveLabel extends TextProps, IAppComponent {
-  onClick: () => void;
+  onPress: () => void;
 }
 
 export const AppInteractiveLabel: React.FC<IAppInteractiveLabel> = (props) => {
-   return <TouchableOpacity className={twMerge('flex justify-center items-center', props.class)}>
-      <Text {...props} style={{ fontFamily: 'Satoshi-Bold' }} className="text-main-500">{props.children}</Text>
+   return <TouchableOpacity className={twMerge('flex justify-center items-center', props.class)} onPress={props.onPress}>
+      <Text style={{ fontFamily: 'Satoshi-Bold' }} className="text-main-500">{props.children}</Text>
    </TouchableOpacity>;
 };

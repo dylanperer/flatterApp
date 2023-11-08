@@ -1,9 +1,9 @@
-import React, { ReactNode, useRef } from 'react';
+import React, {ReactNode, useEffect, useRef} from 'react';
 import { TextInput, TouchableOpacity, Text, View, Image, TextInputProps } from 'react-native';
 import EmailIcon from '../icons/EmailIcon';
 import { AppColors } from '../../utils/constants/styles/AppColors';
 import Animated, {
-   useAnimatedProps,
+   useAnimatedProps, useAnimatedStyle,
    useSharedValue,
    withTiming
 } from 'react-native-reanimated';
@@ -36,6 +36,10 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
       fill: deltaColor.value
    }), [], adapter);
 
+   const rStyle = useAnimatedStyle(()=>{
+      return {borderColor: deltaColor.value};
+   });
+
    return (
       <TouchableOpacity className={twMerge('h-8 flex flex-col justify-between items-center', props.class)}
          onPress={() => textInputRef.current.focus()}>
@@ -52,11 +56,9 @@ export const AppInputField: React.FC<IAppInputField> = (props) => {
             {props.postfix}
          </View>
          <Animated.View className='w-full'
-            //@ts-ignore
-            style={{
+            style={[{
                borderBottomWidth: 1,
-               borderColor: deltaColor
-            }}
+            },rStyle]}
          />
       </TouchableOpacity>
    );
