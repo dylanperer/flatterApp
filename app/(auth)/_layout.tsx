@@ -18,8 +18,8 @@ const config = {
 function _Layout() {
    return (
       <Stack screenOptions={{
-         // animation: isIos? 'fade': 'none',
-         // animationDuration: 200,
+         animation: isIos? 'fade': 'none',
+         animationDuration: 200,
 
          headerShown: false,
          header: ()=>null, contentStyle: {backgroundColor: 'white'}}}>

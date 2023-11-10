@@ -16,11 +16,11 @@ const FadeInOut = forwardRef<IFadeInOutRefProps, IFadeInOutProps>((props, ref) =
    const fadeDelta = useSharedValue<number>(0);
 
    useEffect(() => {
-      fadeDelta.value = withTiming(1, {duration:1000});
+      fadeDelta.value = withTiming(1, {duration:300});
    }, []);
 
    const fadeOut = (duration?: number, cb?: ()=>void) => {
-      fadeDelta.value = withTiming(0, {duration: 1000||duration}, cb);
+      fadeDelta.value = withTiming(0, {duration: 300||duration}, cb);
    };
 
    useImperativeHandle(ref, () => ({fadeOut}), []);

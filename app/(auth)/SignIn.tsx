@@ -27,9 +27,9 @@ const SignIn: React.FC = () => {
    const fadeInOutRef = useRef<IFadeInOutRefProps>(null);
 
    return (
-      <View
-         className="dark w-full flex flex-col justify-start items-center h-full px-3 py-10"
-
+      <FadeInOut
+         class="dark w-full flex flex-col justify-start items-center h-full px-3 py-10"
+         ref={fadeInOutRef}
       >
          <View className='mb-10'>
             <Logo width={42} height={42}/>
@@ -60,11 +60,11 @@ const SignIn: React.FC = () => {
                <ThirdPartyAuth prefixText='Or, Join with...' postfixText='Ready to connect with new people?'
                   postfixInlineSlot={<AppInteractiveLabel class="p-2" onPress={() => {
                      fadeInOutRef.current.fadeOut();
-                     // router.push(AppRoute.SignUp);
+                     router.push(AppRoute.SignUp);
                   }}>{'Join now.'}</AppInteractiveLabel>}/>
             </View>
          </View>
-      </View>);
+      </FadeInOut>);
 };
 
 export default SignIn;
