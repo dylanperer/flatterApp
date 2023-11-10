@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {View} from 'react-native';
 import {AppColorScheme, useGlobalContext} from '../../lib/common/contexts/GlobalContext';
 import {EmailIcon, LockIcon, Logo} from '../../lib/common/icons';
@@ -12,6 +12,8 @@ import {delay} from '../../lib/utils/functions';
 import {ThirdPartyAuth} from '../../lib/common/components/ThirdPartyAuth';
 import {router, useNavigation, useRouter} from 'expo-router';
 import {AppRoute} from '../../lib/utils/constants/nav/routes';
+import Animated, {useSharedValue, withTiming} from 'react-native-reanimated';
+import FadeInOut, {IFadeInOutRefProps} from '../../lib/common/components/FadeInOut';
 
 interface ISignIn {
 
@@ -22,9 +24,12 @@ const SignIn: React.FC = () => {
 
    const router = useRouter();
 
+   const fadeInOutRef = useRef<IFadeInOutRefProps>(null);
+
    return (
       <View
          className="dark w-full flex flex-col justify-start items-center h-full px-3 py-10"
+
       >
          <View className='mb-10'>
             <Logo width={42} height={42}/>
@@ -54,8 +59,8 @@ const SignIn: React.FC = () => {
             <View className=''>
                <ThirdPartyAuth prefixText='Or, Join with...' postfixText='Ready to connect with new people?'
                   postfixInlineSlot={<AppInteractiveLabel class="p-2" onPress={() => {
-                     console.log('@>aasd',);
-                     router.push(AppRoute.SignUp);
+                     fadeInOutRef.current.fadeOut();
+                     // router.push(AppRoute.SignUp);
                   }}>{'Join now.'}</AppInteractiveLabel>}/>
             </View>
          </View>
