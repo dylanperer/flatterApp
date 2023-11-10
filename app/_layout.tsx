@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useFonts} from 'expo-font';
 import '../global.css';
 import {Stack, Tabs} from 'expo-router';
@@ -6,8 +6,8 @@ import {GlobalContextProvider} from '../lib/common/contexts/GlobalContext';
 import {AppText} from '../lib/common/components/AppText';
 import {twMerge} from 'tailwind-merge';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../lib/utils/device';
-import {ScrollView, View} from 'react-native';
+import {isIos, SCREEN_HEIGHT, SCREEN_WIDTH} from '../lib/utils/device';
+import {Keyboard, KeyboardAvoidingView, ScrollView, View} from 'react-native';
 
 // Ensure we import the CSS for Tailwind so it's included in hot module reloads.
 //@ts-ignore
@@ -26,23 +26,53 @@ export default function AppEntry() {
       'Satoshi-Regular': require('../assets/fonts/Satoshi-Regular.ttf')
    });
 
+   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+   const scrollViewRef = useRef();
+
+   useEffect(() => {
+      const keyboardDidShowListener = Keyboard.addListener(
+         'keyboardDidShow',
+         () => {
+            setKeyboardVisible(true); // or some other action
+         }
+      );
+      const keyboardDidHideListener = Keyboard.addListener(
+         'keyboardDidHide',
+         () => {
+            setKeyboardVisible(false); // or some other action
+         }
+      );
+
+      return () => {
+         keyboardDidHideListener.remove();
+         keyboardDidShowListener.remove();
+      };
+   }, []);
+
+
    if (!fontsLoaded && !fontError) {
       return null;
    }
 
+
+
    return <GlobalContextProvider>
       <GestureHandlerRootView className="flex justify-center items-center">
-         <ScrollView>
-            <View style={{height: SCREEN_HEIGHT, width: SCREEN_WIDTH, maxWidth: 450, backgroundColor: 'red'}}>
-               <Stack screenOptions={{
-                  headerShown: false,
-                  header: () => null,
-                  contentStyle: {backgroundColor: 'white'},
-               }}>
-                  <Tabs.Screen name="(auth)"/>
-               </Stack>
-            </View>
-         </ScrollView>
+         <KeyboardAvoidingView
+            behavior="height"
+         >
+            <ScrollView>
+               <View style={{height: SCREEN_HEIGHT, width: SCREEN_WIDTH, maxWidth: 450}}>
+                  <Stack screenOptions={{
+                     headerShown: false,
+                     header: () => null,
+                     contentStyle: {backgroundColor: 'white'},
+                  }}>
+                     <Tabs.Screen name="(auth)"/>
+                  </Stack>
+               </View>
+            </ScrollView>
+         </KeyboardAvoidingView>
       </GestureHandlerRootView>
    </GlobalContextProvider>;
 }

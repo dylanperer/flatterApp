@@ -1,7 +1,7 @@
 import React from 'react';
 import {Stack} from 'expo-router';
 import {AppRoute} from '../../lib/utils/constants/nav/routes';
-import {isIos} from '../../lib/utils/device';
+import {isIos, SCREEN_HEIGHT} from '../../lib/utils/device';
 
 const config = {
    animation: 'spring',
@@ -22,12 +22,10 @@ function _Layout() {
          animationDuration: 200,
 
          headerShown: false,
-         header: ()=>null, contentStyle: {backgroundColor: 'white'}}}>
+         header: ()=>null, contentStyle: {backgroundColor: 'white', height: SCREEN_HEIGHT}}}>
          <Stack.Screen options={{
-            animation: 'fade'
          }} name={AppRoute.SignIn}/>
          <Stack.Screen options={{
-            animation: 'fade'
          }} name={AppRoute.SignUp}/>
       </Stack>
    );

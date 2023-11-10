@@ -32,7 +32,7 @@ const SignUp: React.FC = () => {
          class="dark w-full flex flex-col justify-start items-center h-full px-3 py-10"
          ref={fadeInOutRef}
       >
-         <View className='mb-10'>
+         <View className='mb-16'>
             <Logo width={42} height={42}/>
          </View>
          <View className='self-start flex flex-col gap-y-2 mb-16'>
